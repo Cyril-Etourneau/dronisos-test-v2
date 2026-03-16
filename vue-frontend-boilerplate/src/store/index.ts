@@ -8,7 +8,7 @@ Vue.use(Vuex);
 type DroneFetch = {
     timestamp: string;
     drones: Drone[];
-}
+};
 
 /** Root Vuex state shape. */
 type StoreState = {

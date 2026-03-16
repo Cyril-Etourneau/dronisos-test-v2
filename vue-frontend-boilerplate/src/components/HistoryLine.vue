@@ -49,7 +49,6 @@ export default class HistoryLine extends Vue {
     @Prop({ required: true })
     private drone!: Drone;
 
-
     protected get colorClass(): string {
         const status = getStatusColor(this.drone.status);
 

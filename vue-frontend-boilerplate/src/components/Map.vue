@@ -5,15 +5,26 @@
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
-            <DroneMarker v-for="drone in drones" :key="drone.name" :drone="drone" @open-history="openHistory" />
+            <DroneMarker
+                v-for="drone in drones"
+                :key="drone.name"
+                :drone="drone"
+                @open-history="openHistory"
+            />
         </LMap>
 
         <div v-if="selectedDroneName" class="drone-history">
             <div class="drone-history-title">
-                History of <span class="drone-name">{{ selectedDroneName }}</span>
+                History of
+                <span class="drone-name">{{ selectedDroneName }}</span>
                 <span class="drone-history-subtitle">(Last 10 entries)</span>
             </div>
-            <HistoryLine v-for="(droneVersion, index) in droneVersions" :key="index" :timestamp="droneVersion.timestamp" :drone="droneVersion.drone" />
+            <HistoryLine
+                v-for="(droneVersion, index) in droneVersions"
+                :key="index"
+                :timestamp="droneVersion.timestamp"
+                :drone="droneVersion.drone"
+            />
         </div>
     </div>
 </template>
@@ -45,11 +56,13 @@ export default class Map extends Vue {
             return [];
         }
         const history = store.state.history;
-        const droneVersions: {timestamp: string, drone: Drone}[] = [];
+        const droneVersions: { timestamp: string; drone: Drone }[] = [];
 
         for (const droneFetch of history) {
             const timestamp = droneFetch.timestamp;
-            const drone = droneFetch.drones.find((d) => d.name === this.selectedDroneName);
+            const drone = droneFetch.drones.find(
+                (d) => d.name === this.selectedDroneName,
+            );
 
             if (drone) {
                 droneVersions.push({ timestamp, drone });
