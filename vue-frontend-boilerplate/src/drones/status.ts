@@ -1,3 +1,4 @@
+/** Available drone statuses returned by backend data. */
 enum DroneStatus {
     Ok = "OK",
     LostLink = "LOST_LINK",

@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/drones/schema.ts",
+    "src/drones/status.ts",
+    "src/utils/server.ts",
+    "src/store/index.ts",
+    "src/router.ts",
+    "src/shims-vue.d.ts"
+  ],
+  "exclude": [
+    "tests/**/*",
+    "node_modules"
+  ]
+}

@@ -1,17 +1,31 @@
 import { z } from "zod";
 
-const DroneSchema = z.object({
+const droneSchema = z.object({
     name: z.string(),
     position: z.tuple([z.number(), z.number(), z.number()]),
     status: z.string(),
 });
 
-type Drone = z.infer<typeof DroneSchema>;
+/**
+ * Drone data model.
+ *
+ * Prototype:
+ * `type Drone = { name: string; position: [number, number, number]; status: string }`
+ */
+type Drone = z.infer<typeof droneSchema>;
 
-const DronesArraySchema = z.array(DroneSchema);
+const dronesArraySchema = z.array(droneSchema);
 
+/**
+ * Validates and parses unknown drone payloads.
+ *
+ * Prototype: `validateDrones(data: unknown): Drone[]`
+ *
+ * @param data Raw payload returned by the backend.
+ * @returns Parsed drone array.
+ */
 function validateDrones(data: unknown): Drone[] {
-    return DronesArraySchema.parse(data);
+    return dronesArraySchema.parse(data);
 }
 
-export { Drone, validateDrones };
+export { Drone, droneSchema, validateDrones };

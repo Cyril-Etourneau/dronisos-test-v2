@@ -1,0 +1,21 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "src/drones/schema.ts",
+    "src/drones/status.ts",
+    "src/utils/server.ts",
+    "src/store/index.ts",
+    "src/router.ts"
+  ],
+  "out": "docs/api",
+  "tsconfig": "tsconfig.typedoc.json",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeExternals": true,
+  "readme": "none",
+  "hideGenerator": true,
+  "includeVersion": true,
+  "sort": [
+    "source-order"
+  ]
+}

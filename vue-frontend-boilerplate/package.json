@@ -7,6 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "jest",
+    "docs": "typedoc --options typedoc.json",
+    "docs:check": "typedoc --options typedoc.json --json typedoc.json.out",
     "prettier": "prettier --write \"src/**/*.{ts,vue,js}\"",
     "prettier:check": "prettier --check \"src/**/*.{ts,vue,js}\""
   },
