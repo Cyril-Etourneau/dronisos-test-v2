@@ -19,8 +19,8 @@ const drone = {
 };
 
 describe("DronePopup.vue", () => {
-  it("renders drone details", () => {
-    const { getByText } = render(DronePopup, {
+  it("renders drone details with labeled position fields", () => {
+    const { container, getByText, getAllByText } = render(DronePopup, {
       props: {
         drone,
         statusColor: "green",
@@ -33,9 +33,16 @@ describe("DronePopup.vue", () => {
 
     expect(getByText("Drone A")).toBeTruthy();
     expect(getByText("Position (lng, lat, height):")).toBeTruthy();
+    expect(getByText("Lng")).toBeTruthy();
+    expect(getByText("Lat")).toBeTruthy();
+    expect(getByText("Height")).toBeTruthy();
     expect(getByText("2.35")).toBeTruthy();
     expect(getByText("48.85")).toBeTruthy();
     expect(getByText("120")).toBeTruthy();
+
+    expect(container.querySelector(".drone-popup-grid")).toBeTruthy();
+    expect(container.querySelectorAll(".drone-popup-field")).toHaveLength(3);
+    expect(getAllByText("Status:")).toHaveLength(1);
   });
 
   it("applies status class from statusColor", () => {
@@ -67,5 +74,24 @@ describe("DronePopup.vue", () => {
 
     const status = getByText(DroneStatus.Ok);
     expect(status.classList.contains("drone-status--black")).toBe(true);
+  });
+
+  it("applies the expected class for warning color", () => {
+    const { getByText } = render(DronePopup, {
+      props: {
+        drone: {
+          ...drone,
+          status: DroneStatus.LowBattery,
+        },
+        statusColor: "orange",
+      },
+      stubs: {
+        LPopup: LPopupStub,
+        "v-col": VColStub,
+      },
+    });
+
+    const status = getByText(DroneStatus.LowBattery);
+    expect(status.classList.contains("drone-status--orange")).toBe(true);
   });
 });

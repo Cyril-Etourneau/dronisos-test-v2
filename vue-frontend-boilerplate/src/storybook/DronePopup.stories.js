@@ -108,3 +108,22 @@ Warning.args = {
         status: DroneStatus.LowBattery,
     },
 };
+
+export const LongCoordinates = Template.bind({});
+LongCoordinates.args = {
+    statusColor: "red",
+    drone: {
+        name: "Drone Precision",
+        position: [2.35223456789, 48.85661234567, 120.987654321],
+        status: DroneStatus.MotorKo,
+    },
+};
+
+export const DefaultBlackStatus = Template.bind({});
+DefaultBlackStatus.args = {
+    drone: {
+        name: "Drone Default",
+        position: [1.23456789, 45.67891234, 30],
+        status: DroneStatus.Ok,
+    },
+};
