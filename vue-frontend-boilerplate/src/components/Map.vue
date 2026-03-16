@@ -21,7 +21,6 @@ import { Drone } from "@/drones/schema";
         LTileLayer,
     },
 })
-
 export default class Map extends Vue {
     @Prop({ required: true })
     private drones!: Drone[];

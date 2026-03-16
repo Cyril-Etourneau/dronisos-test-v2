@@ -2,7 +2,13 @@
     <v-app>
         <v-app-bar app color="amber darken-1" dark>
             <div class="d-flex align-center drone-info">
-                <v-img src="@/assets/logo.png" alt="Logo" contain max-width="32" class="mr-3 logo-rounded" />
+                <v-img
+                    src="@/assets/logo.png"
+                    alt="Logo"
+                    contain
+                    max-width="32"
+                    class="mr-3 logo-rounded"
+                />
                 <v-toolbar-title>Dronisos's drone tracking</v-toolbar-title>
             </div>
         </v-app-bar>

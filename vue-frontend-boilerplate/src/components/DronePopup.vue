@@ -2,7 +2,9 @@
     <LPopup>
         <v-col>
             <div class="drone-name">{{ drone.name }}</div>
-            <div>Status: <span :class="colorClass">{{ drone.status }}</span></div>
+            <div>
+                Status: <span :class="colorClass">{{ drone.status }}</span>
+            </div>
             <div>Position (lng, lat, height):</div>
             <div>{{ drone.position[0] }}</div>
             <div>{{ drone.position[1] }}</div>

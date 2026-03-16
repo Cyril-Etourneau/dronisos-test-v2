@@ -14,4 +14,4 @@ function validateDrones(data: unknown): Drone[] {
     return DronesArraySchema.parse(data);
 }
 
-export {Drone, validateDrones};
+export { Drone, validateDrones };

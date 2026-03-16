@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 type StoreState = {
     drones: Drone[];
-}
+};
 
 const store = new Vuex.Store<StoreState>({
     state: {
