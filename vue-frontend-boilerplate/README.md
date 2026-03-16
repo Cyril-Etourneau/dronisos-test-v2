@@ -1,4 +1,9 @@
-# frontend-test-boilerplate
+# test-dronisos-v2
+
+## Features
+- Displays drone position and updates it every 10 seconds
+- Popup with drone information on hover
+- Drone filtering available on name and status
 
 ## Project setup
 ```
@@ -20,5 +25,37 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Runs unit tests
+```
+npm run test
+```
+
+### Runs Prettier
+```
+npm run prettier
+```
+
+### Checks Prettier formatting
+```
+npm run prettier:check
+```
+
+### Runs Storybook (dev server)
+```
+npm run storybook
+```
+
+### Builds Storybook
+```
+npm run storybook:build
+```
+
+### Builds TypeDoc API documentation
+```
+npm run docs
+```
+
+### Checks TypeDoc output (JSON)
+```
+npm run docs:check
+```

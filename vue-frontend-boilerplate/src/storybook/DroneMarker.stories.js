@@ -1,0 +1,81 @@
+import { LMap, LTileLayer } from "vue2-leaflet";
+import DroneMarker from "@/components/DroneMarker.vue";
+import { DroneStatus } from "@/drones/status";
+
+export default {
+  title: "Components/DroneMarker",
+  component: DroneMarker,
+  tags: ["autodocs"],
+};
+
+const Template = (args, { argTypes }) => ({
+  components: {
+    DroneMarker,
+    LMap,
+    LTileLayer,
+  },
+  props: Object.keys(argTypes),
+  data() {
+    return {
+      zoom: 8,
+      center: [48.8566, 2.3522],
+    };
+  },
+  render(h) {
+    return h(
+      "div",
+      {
+        style: {
+          height: "320px",
+          width: "100%",
+        },
+      },
+      [
+        h(
+          LMap,
+          {
+            props: {
+              zoom: this.zoom,
+              center: this.center,
+            },
+            style: {
+              height: "100%",
+              width: "100%",
+            },
+          },
+          [
+            h(LTileLayer, {
+              props: {
+                url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                attribution: "© OpenStreetMap contributors",
+              },
+            }),
+            h(DroneMarker, {
+              props: {
+                drone: this.drone,
+              },
+            }),
+          ],
+        ),
+      ],
+    );
+  },
+});
+
+export const Default = Template.bind({});
+Default.args = {
+  drone: {
+    name: "Drone Marker",
+    position: [2.3522, 48.8566, 120],
+    status: DroneStatus.Ok,
+  },
+};
+
+export const AlertStatus = Template.bind({});
+AlertStatus.args = {
+  drone: {
+    name: "Drone Alert",
+    position: [2.35, 48.86, 80],
+    status: DroneStatus.MotorKo,
+  },
+};
