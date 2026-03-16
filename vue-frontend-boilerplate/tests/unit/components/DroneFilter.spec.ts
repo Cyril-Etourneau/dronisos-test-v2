@@ -139,4 +139,21 @@ describe("DroneFilter.vue", () => {
 
     expect(getByTestId("toggle-icon").textContent?.trim()).toBe("mdi-chevron-down");
   });
+
+  it("does not count whitespace-only name filter as active", async () => {
+    const { queryByTestId, getByTestId } = render(DroneFilter, { stubs });
+
+    await fireEvent.update(getByTestId("name-filter"), "   ");
+
+    expect(queryByTestId("active-chip")).toBeNull();
+  });
+
+  it("shows two active filters when name and status are both set", async () => {
+    const { getByTestId } = render(DroneFilter, { stubs });
+
+    await fireEvent.update(getByTestId("name-filter"), "Alpha");
+    await fireEvent.update(getByTestId("status-filter"), "OK");
+
+    expect(getByTestId("active-chip").textContent).toContain("2 active");
+  });
 });

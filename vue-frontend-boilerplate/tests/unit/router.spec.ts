@@ -1,5 +1,4 @@
 import router from "@/router";
-import DroneInfo from "@/components/DroneInfo.vue";
 import { Route } from "vue-router";
 
 describe("router", () => {
@@ -7,14 +6,22 @@ describe("router", () => {
     expect(router.mode).toBe("history");
   });
 
-  it("registers the root drones route", () => {
+  it("registers the root drones route", async () => {
     const routes = router.options.routes || [];
     const dronesRoute = routes.find((route) => route.name === "drones");
-    const singleViewRoute = dronesRoute as { component?: unknown; path?: string } | undefined;
+    const singleViewRoute = dronesRoute as
+      | { component?: (() => Promise<{ default: unknown }>) | unknown; path?: string }
+      | undefined;
 
     expect(dronesRoute).toBeTruthy();
     expect(singleViewRoute?.path).toBe("/");
-    expect(singleViewRoute?.component).toBe(DroneInfo);
+    expect(typeof singleViewRoute?.component).toBe("function");
+
+    const loaded = await (
+      singleViewRoute?.component as () => Promise<{ default: unknown }>
+    )();
+
+    expect(loaded.default).toBeTruthy();
   });
 
   it("returns saved position when available", () => {
