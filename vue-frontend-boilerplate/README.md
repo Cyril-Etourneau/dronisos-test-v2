@@ -1,9 +1,10 @@
 # test-dronisos-v2
 
 ## Features
-- Displays drone position and updates it every 10 seconds
+- Displays drone position and status and updates it every 10 seconds
 - Popup with drone information on hover
 - Drone filtering available on name and status
+- Drone history on click on drone (under the map)
 
 ## Project setup
 ```

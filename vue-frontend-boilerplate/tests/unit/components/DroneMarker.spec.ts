@@ -24,6 +24,7 @@ const LMarkerStub = {
       :data-lat-lng="JSON.stringify(latLng)"
       @mouseover="$emit('mouseover', markerEvent)"
       @mouseout="$emit('mouseout', markerEvent)"
+      @click="$emit('click')"
     >
       <slot />
     </div>
@@ -96,5 +97,24 @@ describe("DroneMarker.vue", () => {
 
     await fireEvent.mouseOut(marker);
     expect(closePopupSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it("emits open-history with drone name on click", async () => {
+    const { getByTestId, emitted } = render(DroneMarker, {
+      props: {
+        drone,
+      },
+      stubs: {
+        LMarker: LMarkerStub,
+        DroneIcon: DroneIconStub,
+        DronePopup: DronePopupStub,
+      },
+    });
+
+    const marker = getByTestId("l-marker");
+    await fireEvent.click(marker);
+
+    expect(emitted()["open-history"]).toBeTruthy();
+    expect(emitted()["open-history"][0]).toEqual(["Drone B"]);
   });
 });

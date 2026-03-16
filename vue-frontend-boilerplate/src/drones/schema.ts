@@ -11,7 +11,7 @@ const droneSchema = z.object({
  * Drone data model.
  *
  * Prototype:
- * `type Drone = { name: string; position: [number, number, number]; status: string }`
+ * `type Drone = { name: string; position: [number, number, number]; status: DroneStatus }`
  */
 type Drone = z.infer<typeof droneSchema>;
 

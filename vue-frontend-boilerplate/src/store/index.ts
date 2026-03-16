@@ -5,9 +5,15 @@ import { fetchDrones } from "@/utils/server";
 
 Vue.use(Vuex);
 
+type DroneFetch = {
+    timestamp: string;
+    drones: Drone[];
+}
+
 /** Root Vuex state shape. */
 type StoreState = {
     drones: Drone[];
+    history: DroneFetch[];
 };
 
 /**
@@ -18,6 +24,7 @@ type StoreState = {
 const store = new Vuex.Store<StoreState>({
     state: {
         drones: [],
+        history: [],
     },
     getters: {
         /** Returns all drones from state. */
@@ -30,12 +37,21 @@ const store = new Vuex.Store<StoreState>({
         setDrones(state, drones: Drone[]) {
             state.drones = drones;
         },
+        /** Adds a drone fetch entry to history. */
+        updateHistory(state, { timestamp, drones }: DroneFetch) {
+            state.history.unshift({ timestamp, drones });
+            if (state.history.length > 10) {
+                state.history.pop();
+            }
+        },
     },
     actions: {
         /** Fetches drones from backend and commits them into state. */
         async syncDrones({ commit }) {
             const drones = await fetchDrones();
             commit("setDrones", drones);
+            const timestamp = new Date().toISOString();
+            commit("updateHistory", { timestamp, drones });
         },
     },
     modules: {},

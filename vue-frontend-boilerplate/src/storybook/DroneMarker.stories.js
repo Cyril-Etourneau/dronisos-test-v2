@@ -6,6 +6,9 @@ export default {
   title: "Components/DroneMarker",
   component: DroneMarker,
   tags: ["autodocs"],
+  argTypes: {
+    onOpenHistory: { action: "open-history" },
+  },
 };
 
 const Template = (args, { argTypes }) => ({
@@ -54,6 +57,9 @@ const Template = (args, { argTypes }) => ({
               props: {
                 drone: this.drone,
               },
+              on: {
+                "open-history": this.onOpenHistory,
+              },
             }),
           ],
         ),
@@ -77,5 +83,14 @@ AlertStatus.args = {
     name: "Drone Alert",
     position: [2.35, 48.86, 80],
     status: DroneStatus.MotorKo,
+  },
+};
+
+export const LowBattery = Template.bind({});
+LowBattery.args = {
+  drone: {
+    name: "Drone Low Battery",
+    position: [2.33, 48.84, 95],
+    status: DroneStatus.LowBattery,
   },
 };

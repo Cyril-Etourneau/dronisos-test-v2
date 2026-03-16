@@ -3,6 +3,7 @@
         :lat-lng="[drone.position[1], drone.position[0]]"
         @mouseover="openPopup"
         @mouseout="closePopup"
+        @click="openHistory"
     >
         <DroneIcon :color="statusColor" />
         <DronePopup :status-color="statusColor" :drone="drone" />
@@ -44,6 +45,10 @@ export default class DroneMarker extends Vue {
     private closePopup(event: L.LeafletEvent): void {
         const marker = event.target as L.Marker;
         marker.closePopup();
+    }
+
+    private openHistory(): void {
+        this.$emit("open-history", this.drone.name);
     }
 }
 </script>
