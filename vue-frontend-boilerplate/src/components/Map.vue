@@ -32,9 +32,9 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { LMap, LTileLayer } from "vue2-leaflet";
-import DroneMarker from "./DroneMarker.vue";
+import DroneMarker from "@/components/DroneMarker.vue";
+import HistoryLine from "@/components/HistoryLine.vue";
 import { Drone } from "@/drones/schema";
-import HistoryLine from "./HistoryLine.vue";
 import store from "@/store";
 
 @Component({

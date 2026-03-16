@@ -3,6 +3,7 @@ node_modules
 docs
 storybook-static
 /dist
+typedoc.json.out
 
 
 # local env files

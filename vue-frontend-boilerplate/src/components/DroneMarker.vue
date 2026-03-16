@@ -14,10 +14,10 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import L from "leaflet";
 import { LMarker, LPopup } from "vue2-leaflet";
+import DroneIcon from "@/components/DroneIcon.vue";
+import DronePopup from "@/components/DronePopup.vue";
 import { Drone } from "@/drones/schema";
 import { getStatusColor } from "@/drones/status";
-import DroneIcon from "./DroneIcon.vue";
-import DronePopup from "./DronePopup.vue";
 
 @Component({
     components: {

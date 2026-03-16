@@ -1,8 +1,8 @@
 import Vue from "vue";
 import App from "./App.vue";
-import store from "./store";
-import router from "./router";
 import vuetify from "./plugins/vuetify";
+import router from "./router";
+import store from "./store";
 import "./registerServiceWorker";
 import "./leaflet";
 import "leaflet/dist/leaflet.css";

@@ -7,10 +7,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import store from "@/store";
-import { Drone } from "@/drones/schema";
-import Map from "@/components/Map.vue";
 import DroneFilter from "@/components/DroneFilter.vue";
+import Map from "@/components/Map.vue";
+import { Drone } from "@/drones/schema";
+import store from "@/store";
 
 type DroneFilterValue = {
     name: string;
