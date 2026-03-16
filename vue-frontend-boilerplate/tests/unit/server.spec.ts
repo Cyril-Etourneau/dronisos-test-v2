@@ -5,7 +5,7 @@ describe("utils/server", () => {
   let consoleErrorSpy: jest.SpyInstance;
 
   beforeEach(() => {
-    consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+    consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => undefined);
     window.fetch = jest.fn() as unknown as typeof fetch;
   });
 

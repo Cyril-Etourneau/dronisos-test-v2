@@ -1,5 +1,6 @@
 import router from "@/router";
 import DroneInfo from "@/components/DroneInfo.vue";
+import { Route } from "vue-router";
 
 describe("router", () => {
   it("uses history mode", () => {
@@ -19,15 +20,19 @@ describe("router", () => {
   it("returns saved position when available", () => {
     const savedPosition = { x: 12, y: 34 };
     const scrollBehavior = router.options.scrollBehavior;
+    const toRoute = { path: "/" } as Route;
+    const fromRoute = { path: "/previous" } as Route;
 
     expect(scrollBehavior).toBeTruthy();
-    expect(scrollBehavior?.({} as any, {} as any, savedPosition)).toEqual(savedPosition);
+    expect(scrollBehavior?.(toRoute, fromRoute, savedPosition)).toEqual(savedPosition);
   });
 
   it("falls back to top-left when no saved position", () => {
     const scrollBehavior = router.options.scrollBehavior;
+    const toRoute = { path: "/" } as Route;
+    const fromRoute = { path: "/previous" } as Route;
 
     expect(scrollBehavior).toBeTruthy();
-    expect(scrollBehavior?.({} as any, {} as any, undefined)).toEqual({ x: 0, y: 0 });
+    expect(scrollBehavior?.(toRoute, fromRoute, undefined)).toEqual({ x: 0, y: 0 });
   });
 });
