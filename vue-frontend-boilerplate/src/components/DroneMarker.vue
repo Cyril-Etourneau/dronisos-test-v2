@@ -1,22 +1,11 @@
 <template>
     <LMarker
         :lat-lng="[drone.position[1], drone.position[0]]"
-        :icon="markerIcon"
         @mouseover="openPopup"
         @mouseout="closePopup"
     >
-        <LPopup>
-            <div>
-                <strong>{{ drone.name }}</strong>
-                <br />
-                Status: <span :style="{ color: statusColor }">{{ drone.status }}</span>
-                <br />
-                Position:<br />
-                {{ drone.position[0] }}<br />
-                {{ drone.position[1] }}<br />
-                {{ drone.position[2] }}<br />
-            </div>
-        </LPopup>
+        <DroneIcon :color="statusColor" />
+        <DronePopup :status-color="statusColor" :drone="drone" />
     </LMarker>
 </template>
 
@@ -26,11 +15,15 @@ import L from "leaflet";
 import { LMarker, LPopup } from "vue2-leaflet";
 import { Drone } from "@/drones/schema";
 import { DroneStatus } from "@/drones/status";
+import DroneIcon from "./DroneIcon.vue";
+import DronePopup from "./DronePopup.vue";
 
 @Component({
     components: {
         LMarker,
         LPopup,
+        DroneIcon,
+        DronePopup,
     },
 })
 export default class DroneMarker extends Vue {
@@ -38,16 +31,6 @@ export default class DroneMarker extends Vue {
     private drone!: Drone;
 
     private readonly markerSize = 16;
-
-    protected get markerIcon(): L.DivIcon {
-        return L.divIcon({
-            className: "vuetify-marker",
-            html: `<i class="v-icon notranslate mdi mdi-circle theme--light" style="color: ${this.statusColor}; font-size: ${this.markerSize}px; line-height: ${this.markerSize}px;"/>`,
-            iconSize: [this.markerSize, this.markerSize],
-            iconAnchor: [this.markerSize / 2, this.markerSize / 2],
-            popupAnchor: [0, 0],
-        });
-    }
 
     protected get statusColor(): string {
         switch (this.drone.status) {
