@@ -1,4 +1,3 @@
-import DroneInfo from "@/components/DroneInfo.vue";
 import Vue from "vue";
 import VueRouter, { RouteConfig, Route } from "vue-router";
 import { Position } from "vue-router/types/router";
@@ -14,7 +13,7 @@ const routes: RouteConfig[] = [
     {
         name: "drones",
         path: "/",
-        component: DroneInfo,
+        component: () => import("@/components/DroneInfo.vue"),
     },
 ];
 
