@@ -56,6 +56,8 @@ export default class DronePopup extends Vue {
 
 <style scoped>
 .drone-popup {
+    --color-text-secondary: #546e7a;
+
     min-width: 220px;
     padding: 0.25em;
 }
@@ -76,13 +78,12 @@ export default class DronePopup extends Vue {
 .drone-popup-status {
     padding: 0.15em 0.55em;
     border-radius: 999px;
-    background: #f5f5f5;
     font-weight: 600;
 }
 
 .drone-popup-section-title {
     margin-bottom: 0.45em;
-    color: #546e7a;
+    color: var(--color-text-secondary);
     font-size: 0.86em;
     font-weight: 600;
     text-transform: uppercase;
@@ -98,14 +99,13 @@ export default class DronePopup extends Vue {
     display: flex;
     flex-direction: column;
     padding: 0.35em 0.45em;
-    border: 1px solid #eceff1;
+    border: 1px solid var(--color-border-soft);
     border-radius: 0.45em;
-    background: #fafcfd;
 }
 
 .drone-popup-label {
     margin-bottom: 0.2em;
-    color: #607d8b;
+    color: var(--color-text-muted);
     font-size: 0.72em;
     font-weight: 600;
 }

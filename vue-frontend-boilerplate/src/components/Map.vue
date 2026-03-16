@@ -104,6 +104,6 @@ export default class Map extends Vue {
     margin-left: 0.5em;
     font-size: 14px;
     font-weight: 500;
-    color: #607d8b;
+    color: var(--color-text-muted);
 }
 </style>

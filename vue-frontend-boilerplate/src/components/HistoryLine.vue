@@ -60,7 +60,7 @@ export default class HistoryLine extends Vue {
 <style scoped>
 .history-line {
     margin-top: 0.5em;
-    border: 1px solid #eceff1;
+    border: 1px solid var(--color-border-soft);
     border-radius: 0.5em;
 }
 

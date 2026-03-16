@@ -29,6 +29,11 @@ export default class App extends Vue {}
 </script>
 
 <style>
+:root {
+    --color-border-soft: #eceff1;
+    --color-text-muted: #607d8b;
+}
+
 .drone-info {
     cursor: pointer;
 }
