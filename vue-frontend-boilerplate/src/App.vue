@@ -37,4 +37,29 @@ export default class App extends Vue {}
     overflow: hidden;
     border-radius: 0.5em;
 }
+
+.v-app-bar {
+    z-index: 2000 !important;
+}
+
+.drone-name {
+    font-weight: bold;
+    padding-bottom: 1em;
+}
+
+.drone-status--green {
+    color: green;
+}
+
+.drone-status--orange {
+    color: orange;
+}
+
+.drone-status--red {
+    color: red;
+}
+
+.drone-status--black {
+    color: black;
+}
 </style>

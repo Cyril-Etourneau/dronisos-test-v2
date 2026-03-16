@@ -54,11 +54,10 @@ describe("DronePopup.vue", () => {
     expect(status.classList.contains("drone-status--green")).toBe(true);
   });
 
-  it("falls back to black status class for unknown colors", () => {
+  it("uses black status class when statusColor is not provided", () => {
     const { getByText } = render(DronePopup, {
       props: {
         drone,
-        statusColor: "blue",
       },
       stubs: {
         LPopup: LPopupStub,

@@ -39,16 +39,7 @@ export default class DroneIcon extends Vue {
     }
 
     protected get colorClass(): string {
-        switch (this.color) {
-            case "green":
-                return "drone-icon--green";
-            case "orange":
-                return "drone-icon--orange";
-            case "red":
-                return "drone-icon--red";
-            default:
-                return "drone-icon--black";
-        }
+        return `drone-status--${this.color}`;
     }
 }
 </script>
@@ -59,19 +50,19 @@ export default class DroneIcon extends Vue {
     line-height: 16px;
 }
 
-.drone-icon--green {
+.drone-status--green {
     color: green;
 }
 
-.drone-icon--orange {
+.drone-status--orange {
     color: orange;
 }
 
-.drone-icon--red {
+.drone-status--red {
     color: red;
 }
 
-.drone-icon--black {
+.drone-status--black {
     color: black;
 }
 </style>

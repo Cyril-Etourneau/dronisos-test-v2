@@ -31,39 +31,7 @@ export default class DronePopup extends Vue {
     private statusColor!: string;
 
     protected get colorClass(): string {
-        switch (this.statusColor) {
-            case "green":
-                return "drone-status--green";
-            case "orange":
-                return "drone-status--orange";
-            case "red":
-                return "drone-status--red";
-            default:
-                return "drone-status--black";
-        }
+        return `drone-status--${this.statusColor}`;
     }
 }
 </script>
-
-<style scoped>
-.drone-name {
-    font-weight: bold;
-    padding-bottom: 1em;
-}
-
-.drone-status--green {
-    color: green;
-}
-
-.drone-status--orange {
-    color: orange;
-}
-
-.drone-status--red {
-    color: red;
-}
-
-.drone-status--black {
-    color: black;
-}
-</style>

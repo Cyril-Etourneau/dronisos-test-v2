@@ -14,7 +14,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import L from "leaflet";
 import { LMarker, LPopup } from "vue2-leaflet";
 import { Drone } from "@/drones/schema";
-import { DroneStatus } from "@/drones/status";
+import { getStatusColor } from "@/drones/status";
 import DroneIcon from "./DroneIcon.vue";
 import DronePopup from "./DronePopup.vue";
 
@@ -33,18 +33,7 @@ export default class DroneMarker extends Vue {
     private readonly markerSize = 16;
 
     protected get statusColor(): string {
-        switch (this.drone.status) {
-            case DroneStatus.Ok:
-                return "green";
-            case DroneStatus.LowBattery:
-                return "orange";
-            case DroneStatus.LostLink:
-            case DroneStatus.BadConfig:
-            case DroneStatus.MotorKo:
-                return "red";
-            default:
-                return "black";
-        }
+        return getStatusColor(this.drone.status);
     }
 
     private openPopup(event: L.LeafletEvent): void {

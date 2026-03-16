@@ -1,9 +1,10 @@
 import { z } from "zod";
+import { DroneStatus } from "./status";
 
 const droneSchema = z.object({
     name: z.string(),
     position: z.tuple([z.number(), z.number(), z.number()]),
-    status: z.string(),
+    status: z.nativeEnum(DroneStatus),
 });
 
 /**

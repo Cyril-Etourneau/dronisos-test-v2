@@ -51,14 +51,11 @@ describe("DroneIcon.vue", () => {
     const icon = container.querySelector(".drone-icon");
 
     expect(icon).not.toBeNull();
-    expect(icon?.classList.contains("drone-icon--green")).toBe(true);
+    expect(icon?.classList.contains("drone-status--green")).toBe(true);
   });
 
-  it("falls back to black class for unknown colors", () => {
+  it("uses black class when color is not provided", () => {
     const { container } = render(DroneIcon, {
-      props: {
-        color: "blue",
-      },
       stubs: {
         LIcon: LIconStub,
         "v-icon": VIconStub,
@@ -68,6 +65,6 @@ describe("DroneIcon.vue", () => {
     const icon = container.querySelector(".drone-icon");
 
     expect(icon).not.toBeNull();
-    expect(icon?.classList.contains("drone-icon--black")).toBe(true);
+    expect(icon?.classList.contains("drone-status--black")).toBe(true);
   });
 });

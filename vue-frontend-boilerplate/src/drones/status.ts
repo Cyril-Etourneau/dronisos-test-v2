@@ -7,4 +7,19 @@ enum DroneStatus {
     LowBattery = "LOW_BATTERY",
 }
 
-export { DroneStatus };
+function getStatusColor(status: DroneStatus): string {
+    switch (status) {
+        case DroneStatus.Ok:
+            return "green";
+        case DroneStatus.LowBattery:
+            return "orange";
+        case DroneStatus.LostLink:
+        case DroneStatus.BadConfig:
+        case DroneStatus.MotorKo:
+            return "red";
+        default:
+            return "black";
+    }
+}
+
+export { DroneStatus, getStatusColor };
