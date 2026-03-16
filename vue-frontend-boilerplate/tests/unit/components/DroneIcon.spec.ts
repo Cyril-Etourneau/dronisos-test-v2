@@ -37,21 +37,25 @@ describe("DroneIcon.vue", () => {
     expect(lIcon.getAttribute("data-popup-anchor")).toBe("[0,0]");
   });
 
-  it("uses the matching class for known colors", () => {
-    const { container } = render(DroneIcon, {
-      props: {
-        color: "green",
-      },
-      stubs: {
-        LIcon: LIconStub,
-        "v-icon": VIconStub,
-      },
+  it("uses the matching class for each supported color", () => {
+    const colors = ["green", "orange", "red", "black"];
+
+    colors.forEach((color) => {
+      const { container } = render(DroneIcon, {
+        props: {
+          color,
+        },
+        stubs: {
+          LIcon: LIconStub,
+          "v-icon": VIconStub,
+        },
+      });
+
+      const icon = container.querySelector(".drone-icon");
+
+      expect(icon).not.toBeNull();
+      expect(icon?.classList.contains(`drone-status--${color}`)).toBe(true);
     });
-
-    const icon = container.querySelector(".drone-icon");
-
-    expect(icon).not.toBeNull();
-    expect(icon?.classList.contains("drone-status--green")).toBe(true);
   });
 
   it("uses black class when color is not provided", () => {

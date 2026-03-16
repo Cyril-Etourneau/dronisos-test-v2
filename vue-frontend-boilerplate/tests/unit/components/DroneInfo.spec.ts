@@ -51,6 +51,20 @@ const DroneFilterStub = {
       >
         filter-status
       </button>
+      <button
+        type="button"
+        data-testid="filter-combined"
+        @click="$emit('change', { name: 'a', status: ['LOW_BATTERY'] })"
+      >
+        filter-combined
+      </button>
+      <button
+        type="button"
+        data-testid="filter-name-trimmed"
+        @click="$emit('change', { name: '  Alpha  ', status: [] })"
+      >
+        filter-name-trimmed
+      </button>
     </div>
   `,
 };
@@ -137,6 +151,18 @@ describe("DroneInfo.vue", () => {
 
     expect(map.getAttribute("data-drones")).toBe(
       JSON.stringify([mockState.drones[1]]),
+    );
+
+    await fireEvent.click(getByTestId("filter-combined"));
+
+    expect(map.getAttribute("data-drones")).toBe(
+      JSON.stringify([mockState.drones[1]]),
+    );
+
+    await fireEvent.click(getByTestId("filter-name-trimmed"));
+
+    expect(map.getAttribute("data-drones")).toBe(
+      JSON.stringify([mockState.drones[0]]),
     );
   });
 });

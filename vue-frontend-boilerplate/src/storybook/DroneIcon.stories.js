@@ -9,6 +9,10 @@ export default {
     color: {
       control: { type: "select" },
       options: ["black", "green", "orange", "red"],
+      description: "Icon color class. Defaults to black when omitted.",
+      table: {
+        defaultValue: { summary: "black" },
+      },
     },
   },
 };
